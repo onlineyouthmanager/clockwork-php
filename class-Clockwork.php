@@ -224,6 +224,27 @@ class Clockwork {
         $sms_node->appendChild($trunc_node);
       }
 
+      // Delivery reports URL
+      if (array_key_exists('dlr_url', $single)) {
+        $dlr_url_node = $req_doc->createElement('DlrUrl');
+        $dlr_url_node->appendChild($req_doc->createTextNode($single['dlr_url']));
+        $sms_node->appendChild($dlr_url_node);
+      }
+      
+      // Delivery reports type
+      if (array_key_exists('dlr_type', $single)) {
+        $dlr_url_node = $req_doc->createElement('DlrType');
+        $dlr_url_node->appendChild($req_doc->createTextNode($single['dlr_type']));
+        $sms_node->appendChild($dlr_url_node);
+      }
+      
+      // Delivery reports content
+      if (array_key_exists('dlr_content', $single)) {
+        $dlr_url_node = $req_doc->createElement('DlrContent');
+        $dlr_url_node->appendChild($req_doc->createTextNode($single['dlr_content']));
+        $sms_node->appendChild($dlr_url_node);
+      }
+    
       // Invalid Char Action
       if (array_key_exists('invalid_char_action', $single) || isset($this->invalid_char_action)) {
         $action = array_key_exists('invalid_char_action', $single) ? $single['invalid_char_action'] : $this->invalid_char_action;
